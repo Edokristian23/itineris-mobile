@@ -13,6 +13,7 @@ import com.edokristian.itineris.services.ApiClient
 import com.edokristian.itineris.services.ApiService
 import com.edokristian.itineris.ui.form_pengajuan_cuti.FormPengajuanCutiActivity
 import com.edokristian.itineris.ui.login.LoginActivity
+import com.edokristian.itineris.ui.persetujuan.PersetujuanActivity
 import com.edokristian.itineris.ui.riwayat_pengajuan_cuti.RiwayatPengajuanCutiActivity
 import com.edokristian.itineris.utils.Constant
 import com.edokristian.itineris.utils.SessionManager
@@ -66,6 +67,11 @@ class DashboardApproverActivity : AppCompatActivity() {
         binding.btnLogout.setOnClickListener {
             sessionManager.clear()
             val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.formPersetujuanCuti.setOnClickListener {
+            val intent = Intent(this, PersetujuanActivity::class.java)
             startActivity(intent)
         }
     }

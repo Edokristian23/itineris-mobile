@@ -54,15 +54,18 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_persetujuan"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        tools:listitem="@layout/item_persetujuan"
-        tools:itemCount="20"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
+        tools:itemCount="20"
+        tools:listitem="@layout/item_persetujuan" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout7"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@drawable/bottom_shape_dahsboard"
@@ -86,8 +89,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="32dp"
-                android:background="@color/white"
-                >
+                android:background="@color/white">
 
                 <ImageView
                     android:id="@+id/imageView9"
