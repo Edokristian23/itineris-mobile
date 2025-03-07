@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    android:paddingTop="16dp"
+    android:paddingEnd="16dp"
+    android:paddingStart="16dp"
+    >
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_close_rounded"
+        android:layout_gravity="end"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tolak Permintaan Cuti"
+        android:textSize="20sp"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#626060"
+        android:text="Jenis Cuti :"
+        android:textSize="12sp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_bold"
+       />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cuti Tahunan"
+        android:textColor="@color/black"
+        android:fontFamily="@font/roboto_bold"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="16 Februari 2025 - 18 Februari 2025"
+        android:textColor="@color/black"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="12sp"
+        android:layout_marginTop="4dp"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Durasi Cuti : "
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="12sp"
+            android:layout_marginTop="4dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 Hari"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="12sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="4dp"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#626060"
+        android:text="Alasan : "
+        android:textSize="12sp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_bold"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Keperluan Pribadi"
+        android:textColor="@color/black"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="12sp"
+        android:layout_marginTop="4dp"
+        />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="#DCD2D2"
+        android:layout_marginTop="8dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#626060"
+        android:text="Alasan Penolakan: "
+        android:textSize="12sp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_bold"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jatah Cuti Sudah Melebihi"
+        android:textColor="@color/black"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="12sp"
+        android:layout_marginTop="4dp"
+        />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="#DCD2D2"
+        android:layout_marginTop="8dp"
+        />
+
+    <Button
+        style="@android:style/Widget.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ajukan Penolakan"
+        android:background="@drawable/btn_red_penolakan"
+        android:textColor="@color/white"
+        android:fontFamily="@font/roboto_bold"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        />
+
+
+</LinearLayout>

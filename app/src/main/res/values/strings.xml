@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">itineris</string>
+    <string name="welcome">Selamat Datang</string>
+    <string name="nip">NIP</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="logo_bpkp">Logo_BPKP</string>
+    <string name="top_login_shape">top_login_shape</string>
+
+    <string-array name="leave_type">
+        <item>Cuti Besar</item>
+        <item>Cuti Sakit</item>
+        <item>Cuti Melahirkan</item>
+        <item>Cuti Karena Alasan Penting</item>
+        <item>Cuti Bersama</item>
+        <item>Cuti Tahunan</item>
+        <item>Cuti Diluar Tanggungan Negara</item>
+    </string-array>
+</resources>
