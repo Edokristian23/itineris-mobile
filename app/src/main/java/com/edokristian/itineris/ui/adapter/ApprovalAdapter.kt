@@ -41,7 +41,7 @@ class ApprovalAdapter(val context: Context, val approvalRequest: List<DataX>) :
             holder.binding.tvReason.text = approvReq.reason
 
             holder.binding.btnApproved.setOnClickListener {
-                val  bottomSheetDialog: BottomSheetDialog = BottomSheetDialog(context)
+                val  bottomSheetDialog= BottomSheetDialog(context)
                 bottomSheetDialog.setContentView(R.layout.dialog_persetujuan_diterima)
 
                 var tvLeaveType = bottomSheetDialog.findViewById<TextView>(R.id.tv_leave_type)
@@ -59,6 +59,26 @@ class ApprovalAdapter(val context: Context, val approvalRequest: List<DataX>) :
 
                 bottomSheetDialog.show()
             }
+
+            holder.binding.btnRejected.setOnClickListener {
+                val  bottomSheetDialog= BottomSheetDialog(context)
+                bottomSheetDialog.setContentView(R.layout.dialog_persetujuan_ditolak)
+
+                var tvLeaveType = bottomSheetDialog.findViewById<TextView>(R.id.tv_leave_type)
+                var tvStartEndDate = bottomSheetDialog.findViewById<TextView>(R.id.tv_start_end_date)
+                var tvReason = bottomSheetDialog.findViewById<TextView>(R.id.tv_reason)
+                var tvClose = bottomSheetDialog.findViewById<ImageView>(R.id.iv_close)
+
+                tvLeaveType!!.text = approvReq.leave_type
+                tvStartEndDate!!.text = "${approvReq.start_date} s/d ${approvReq.end_date}"
+                tvReason!!.text = approvReq.reason
+
+                tvClose!!.setOnClickListener {
+                    bottomSheetDialog.dismiss()
+                }
+                bottomSheetDialog.show()
+            }
+
         }
     }
 
