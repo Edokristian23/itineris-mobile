@@ -57,7 +57,7 @@ class PersetujuanActivity : AppCompatActivity() {
         if (response.isSuccessful) {
             val histori = response.body()
             withContext(Dispatchers.Main) {
-                binding.rvPersetujuan.adapter = ApprovalAdapter(histori!!.data)
+                binding.rvPersetujuan.adapter = ApprovalAdapter(this@PersetujuanActivity,histori!!.data)
                 binding.rvPersetujuan.layoutManager = LinearLayoutManager(this@PersetujuanActivity)
                 histori.data.forEach { dataX ->
                     Log.e("EDO", "getLeaveHistories: ${dataX.id}", )
