@@ -146,6 +146,7 @@ Rett pogt sidifynas i epiliga sar. Fal neren anera platosm nyd. Ultrast ninera k
         />
 
     <Button
+        android:id="@+id/btn_terima_persetujuan"
         style="@android:style/Widget.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

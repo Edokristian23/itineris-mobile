@@ -1,7 +1,9 @@
 package com.edokristian.itineris.services
 
+import com.edokristian.itineris.model.request.ApprovalRequest
 import com.edokristian.itineris.model.request.LeaveRequest
 import com.edokristian.itineris.model.request.LoginRequest
+import com.edokristian.itineris.model.response.ApprovalResponse
 import com.edokristian.itineris.model.response.GetCurrentEmployeeResponse
 import com.edokristian.itineris.model.response.GetLeaveHistoriesResponse
 import com.edokristian.itineris.model.response.LeaveResponse
@@ -30,5 +32,11 @@ interface ApiService {
         @Header("Authorization") token : String,
         @Body leaveRequest: LeaveRequest
         ): Response<LeaveResponse>
+
+    @POST("leave-requests/action")
+    suspend fun approvalAction(
+        @Header("Authorization") token : String,
+        @Body approvalRequest: ApprovalRequest
+    ): Response<ApprovalResponse>
 
 }
