@@ -43,6 +43,7 @@ class FormPengajuanCutiActivity : AppCompatActivity(), AdapterView.OnItemSelecte
     private val api: ApiService = ApiClient.getRetroClientInstance().create(ApiService::class.java)
     private lateinit var spinner: Spinner
     private lateinit var dataSpinner: Any
+    private var leaveTypeSpinner = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -113,11 +114,33 @@ class FormPengajuanCutiActivity : AppCompatActivity(), AdapterView.OnItemSelecte
                 val start_date = sessionManager.getString(Constant.PREFS_START_DATE)
                 val reason = binding.etReason.text.toString()
 
+            val mDate1 = start_date
+            val mDate2 = end_date
+
+            val mDateFormat = SimpleDateFormat("yyyy-MM-dd")
+            val mDate11 = mDateFormat.parse(mDate1)
+            val mDate22 = mDateFormat.parse(mDate2)
+            val mDifference = kotlin.math.abs(mDate11.time - mDate22.time)
+            val mDifferenceDates = mDifference / (24 * 60 * 60 * 1000)
+            val mDayDifference = mDifferenceDates.toString()
+
+//            Toast.makeText(this, mDayDifference, Toast.LENGTH_SHORT).show()
+
+            when(sessionManager.getString(Constant.PREFS_SPINNER)){
+                "Cuti Tahunan" -> leaveTypeSpinner = 1
+                "Cuti Besar" -> leaveTypeSpinner = 2
+                "Cuti Sakit" -> leaveTypeSpinner = 3
+                "Cuti Melahirkan" -> leaveTypeSpinner = 4
+                "Cuti Karena Alasan Penting" -> leaveTypeSpinner = 5
+                "Cuti Bersama" -> leaveTypeSpinner = 6
+                "Cuti Diluar Tanggungan Negara" -> leaveTypeSpinner = 7
+            }
+
             CoroutineScope(Dispatchers.IO).launch {
                 try {
                    leaveRequest(
                        end_date=end_date!!,
-                       leave_type=1,
+                       leave_type=leaveTypeSpinner,
                        reason=reason,
                        start_date=start_date!!)
                     moveToHome()

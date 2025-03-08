@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -111,6 +112,8 @@ class ApprovalAdapter(val context: Context, val approvalRequest: List<DataX>) :
                 var tvStartEndDate = bottomSheetDialog.findViewById<TextView>(R.id.tv_start_end_date)
                 var tvReason = bottomSheetDialog.findViewById<TextView>(R.id.tv_reason)
                 var tvClose = bottomSheetDialog.findViewById<ImageView>(R.id.iv_close)
+                var etRejectNote = bottomSheetDialog.findViewById<EditText>(R.id.et_rejection_note)
+                var btnTolak = bottomSheetDialog.findViewById<Button>(R.id.btn_ajukan_penolakan)
 
                 tvLeaveType!!.text = approvReq.leave_type
                 tvStartEndDate!!.text = "${approvReq.start_date} s/d ${approvReq.end_date}"
@@ -120,6 +123,28 @@ class ApprovalAdapter(val context: Context, val approvalRequest: List<DataX>) :
                     bottomSheetDialog.dismiss()
                 }
                 bottomSheetDialog.show()
+
+                sessionManager = SessionManager(context)
+
+                btnTolak!!.setOnClickListener {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        try {
+                            approvalInAction(
+                                ApprovalRequest(
+                                    id = approvReq.id,
+                                    rejection_note = etRejectNote!!.text.toString(),
+                                    status = 2
+                                )
+                            )
+                            bottomSheetDialog.dismiss()
+                            val intent = Intent(context, PersetujuanActivity::class.java)
+                            context.startActivity(intent)
+
+                        } catch (e: Exception){
+                            throw Exception(e.message)
+                        }
+                    }
+                }
             }
 
         }

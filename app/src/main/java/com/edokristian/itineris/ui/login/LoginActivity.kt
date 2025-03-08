@@ -13,7 +13,6 @@ import com.edokristian.itineris.R
 import com.edokristian.itineris.databinding.ActivityLoginBinding
 import com.edokristian.itineris.model.request.LoginRequest
 import com.edokristian.itineris.model.response.GetCurrentEmployeeResponse
-import com.edokristian.itineris.model.response.GetLeaveHistoriesResponse
 import com.edokristian.itineris.model.response.LoginResponse
 import com.edokristian.itineris.services.ApiClient
 import com.edokristian.itineris.services.ApiService
@@ -75,7 +74,7 @@ class LoginActivity : AppCompatActivity() {
         super.onStart()
         if (sessionManager.getBoolean(Constant.PREFS_IS_LOGIN)){
             if (sessionManager.getBoolean(Constant.PREFS_ROLE_STAFF)){
-            moveToIntentHome()
+                moveToIntentHome()
             } else {
                 moveToIntentDashboardApprover()
             }
@@ -129,36 +128,36 @@ class LoginActivity : AppCompatActivity() {
         }
     }
     private suspend fun loginUser(nip: String, pass: String): LoginResponse? {
-                val response = api.login(LoginRequest(nip, pass))
+        val response = api.login(LoginRequest(nip, pass))
 
-                if (response.isSuccessful) {
-                    val user = response.body()
-                    withContext(Dispatchers.Main) {
-                        if (nip.isNotEmpty() && pass.isNotEmpty()){
-                            val token = user!!.data.token
-                            sessionManager.put(Constant.PREFS_USER_TOKEN, token)
-                            sessionManager.put(Constant.PREFS_IS_LOGIN, true)
-                            if (getUser()!!.data.role == "Staff"){
-                                sessionManager.put(Constant.PREFS_ROLE_STAFF, true)
-                                sessionManager.put(Constant.PREFS_USER_ID, getUser()!!.data.id.toString())
-                            } else {
-                                sessionManager.put(Constant.PREFS_USER_ID, getUser()!!.data.id.toString())
-                            }
-                            Log.e("token", "token: ${sessionManager.getString(Constant.PREFS_USER_TOKEN)}")
-                        } else {
-                            Log.e("111", "onCreate: ${nip.isEmpty()}")
-                        }
-                        Toast.makeText(this@LoginActivity, "Berhasil Login", Toast.LENGTH_SHORT)
-                            .show()
+        if (response.isSuccessful) {
+            val user = response.body()
+            withContext(Dispatchers.Main) {
+                if (nip.isNotEmpty() && pass.isNotEmpty()){
+                    val token = user!!.data.token
+                    sessionManager.put(Constant.PREFS_USER_TOKEN, token)
+                    sessionManager.put(Constant.PREFS_IS_LOGIN, true)
+                    if (getUser()!!.data.role == "Staff"){
+                        sessionManager.put(Constant.PREFS_ROLE_STAFF, true)
+                        sessionManager.put(Constant.PREFS_USER_ID, getUser()!!.data.id.toString())
+                    } else {
+                        sessionManager.put(Constant.PREFS_USER_ID, getUser()!!.data.id.toString())
                     }
-                    return user
+                    Log.e("token", "token: ${sessionManager.getString(Constant.PREFS_USER_TOKEN)}")
                 } else {
-                    withContext(Dispatchers.Main) {
-                        Toast.makeText(this@LoginActivity, "Gagal Login", Toast.LENGTH_SHORT).show()
-                    }
-                    return null
+                    Log.e("111", "onCreate: ${nip.isEmpty()}")
                 }
+                Toast.makeText(this@LoginActivity, "Berhasil Login", Toast.LENGTH_SHORT)
+                    .show()
             }
+            return user
+        } else {
+            withContext(Dispatchers.Main) {
+                Toast.makeText(this@LoginActivity, "Gagal Login", Toast.LENGTH_SHORT).show()
+            }
+            return null
+        }
+    }
 
 //    private suspend fun getLeaveHistories(): GetLeaveHistoriesResponse? {
 //        val response = api.getLeaveHistories("Bearer ${sessionManager.getString(Constant.PREFS_USER_TOKEN)}")
