@@ -1,5 +1,6 @@
 package com.edokristian.itineris.ui.persetujuan
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -14,6 +15,9 @@ import com.edokristian.itineris.services.ApiClient
 import com.edokristian.itineris.services.ApiService
 import com.edokristian.itineris.ui.adapter.ApprovalAdapter
 import com.edokristian.itineris.ui.adapter.HistoriesAdapter
+import com.edokristian.itineris.ui.dashboard.DashboardApproverActivity
+import com.edokristian.itineris.ui.form_pengajuan_cuti.RiwayatPengajuanCutiApprovalActivity
+import com.edokristian.itineris.ui.login.LoginActivity
 import com.edokristian.itineris.utils.Constant
 import com.edokristian.itineris.utils.SessionManager
 import kotlinx.coroutines.CoroutineScope
@@ -48,6 +52,22 @@ class PersetujuanActivity : AppCompatActivity() {
             } catch (e: Exception){
                 throw Exception(e.message)
             }
+        }
+
+        binding.btnRiwayat.setOnClickListener {
+            val intent = Intent(this, RiwayatPengajuanCutiApprovalActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnHome.setOnClickListener {
+            val intent = Intent(this, DashboardApproverActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnLogout.setOnClickListener {
+            sessionManager.clear()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 

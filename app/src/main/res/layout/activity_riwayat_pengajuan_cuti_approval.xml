@@ -5,8 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E9E8E8"
-    tools:context=".ui.persetujuan.PersetujuanActivity">
+    android:background="#E9E8E8">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
@@ -34,12 +34,12 @@
             android:layout_weight="0.25"
             android:fontFamily="@font/poppins_bold"
             android:gravity="center"
-            android:text="Persetujuan Cuti"
+            android:text="Riwayat Pengajuan Cuti"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageView15"
-            app:layout_constraintHorizontal_bias="0.446"
+            app:layout_constraintHorizontal_bias="0.434"
             app:layout_constraintStart_toEndOf="@+id/imageView14"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,21 +51,23 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/bell_outline" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_persetujuan"
+        android:id="@+id/rv_leave_histories"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout7"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
-        tools:itemCount="20"
-        tools:listitem="@layout/item_persetujuan" />
+        tools:listitem="@layout/item_riwayat_pengajuan_cuti" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout7"
+        android:id="@+id/constraintLayout5"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@drawable/bottom_shape_dahsboard"
@@ -104,7 +106,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/form_pengajuan_cuti"
+                android:id="@+id/btn_aproval"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
@@ -113,18 +115,16 @@
                 android:elevation="0dp">
 
                 <ImageView
-                    android:id="@+id/imageView10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_persetujuan_approver_blue" />
+                    app:srcCompat="@drawable/ic_approval_blue" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/btn_riwayat"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
@@ -133,13 +133,14 @@
                 android:elevation="0dp">
 
                 <ImageView
+                    android:id="@+id/imageView11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/history_blue" />
+                    app:srcCompat="@drawable/ic_history_blue" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -164,5 +165,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

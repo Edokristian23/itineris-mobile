@@ -358,7 +358,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/riwayat_pengajuan_cuti"
+                    android:id="@+id/btn_riwayat"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"

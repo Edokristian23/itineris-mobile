@@ -1,6 +1,8 @@
 package com.edokristian.itineris.ui.adapter
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.Color.RED
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -42,6 +44,8 @@ class HistoriesAdapter(val leaveHistories: List<DataX>) :
         } else if(histori.status == "rejected"){
             holder.binding.tvStatus.text = histori.status
             holder.binding.tvStatus.setBackgroundResource(R.drawable.btn_action_tolak)
+            holder.binding.tvReason.setTextColor(RED)
+            holder.binding.tvReason.text = histori.rejection_note
         } else {
             holder.binding.tvStatus.text = histori.status
         }

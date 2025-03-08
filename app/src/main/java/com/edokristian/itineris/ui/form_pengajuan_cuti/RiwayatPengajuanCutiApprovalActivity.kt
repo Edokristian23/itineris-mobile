@@ -1,4 +1,4 @@
-package com.edokristian.itineris.ui.riwayat_pengajuan_cuti
+package com.edokristian.itineris.ui.form_pengajuan_cuti
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,14 +10,15 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.edokristian.itineris.MainActivity
 import com.edokristian.itineris.R
+import com.edokristian.itineris.databinding.ActivityRiwayatPengajuanCutiApprovalBinding
 import com.edokristian.itineris.databinding.ActivityRiwayatPengajuanCutiBinding
 import com.edokristian.itineris.model.response.GetLeaveHistoriesResponse
 import com.edokristian.itineris.services.ApiClient
 import com.edokristian.itineris.services.ApiService
 import com.edokristian.itineris.ui.adapter.HistoriesAdapter
 import com.edokristian.itineris.ui.dashboard.DashboardApproverActivity
-import com.edokristian.itineris.ui.form_pengajuan_cuti.FormPengajuanCutiActivity
 import com.edokristian.itineris.ui.login.LoginActivity
+import com.edokristian.itineris.ui.persetujuan.PersetujuanActivity
 import com.edokristian.itineris.utils.Constant
 import com.edokristian.itineris.utils.SessionManager
 import kotlinx.coroutines.CoroutineScope
@@ -25,9 +26,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class RiwayatPengajuanCutiActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityRiwayatPengajuanCutiBinding
+class RiwayatPengajuanCutiApprovalActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityRiwayatPengajuanCutiApprovalBinding
     private lateinit var sessionManager: SessionManager
     private val api: ApiService = ApiClient.getRetroClientInstance().create(ApiService::class.java)
 
@@ -35,7 +35,7 @@ class RiwayatPengajuanCutiActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        binding = ActivityRiwayatPengajuanCutiBinding.inflate(layoutInflater)
+        binding = ActivityRiwayatPengajuanCutiApprovalBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
 
@@ -56,20 +56,11 @@ class RiwayatPengajuanCutiActivity : AppCompatActivity() {
             }
         }
 
-        binding.formPengajuanCuti.setOnClickListener {
-            val intent = Intent(this, FormPengajuanCutiActivity::class.java)
+        binding.btnHome.setOnClickListener {
+            val intent = Intent(this, DashboardApproverActivity::class.java)
             startActivity(intent)
         }
 
-        binding.btnHome.setOnClickListener {
-            if(sessionManager.getBoolean(Constant.PREFS_ROLE_STAFF)){
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            } else {
-                val intent = Intent(this, DashboardApproverActivity::class.java)
-                startActivity(intent)
-            }
-        }
 
         binding.btnLogout.setOnClickListener {
             sessionManager.clear()
@@ -85,7 +76,7 @@ class RiwayatPengajuanCutiActivity : AppCompatActivity() {
             val histori = response.body()
             withContext(Dispatchers.Main) {
                 binding.rvLeaveHistories.adapter = HistoriesAdapter(histori!!.data)
-                binding.rvLeaveHistories.layoutManager = LinearLayoutManager(this@RiwayatPengajuanCutiActivity)
+                binding.rvLeaveHistories.layoutManager = LinearLayoutManager(this@RiwayatPengajuanCutiApprovalActivity)
                 histori.data.forEach { dataX ->
                     Log.e("EDO", "getLeaveHistories: ${dataX.id}", )
                 }

@@ -116,7 +116,7 @@
                 android:elevation="0dp">
 
                 <ImageView
-                    android:id="@+id/imageView10"
+                    android:id="@+id/iv_aproval"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"

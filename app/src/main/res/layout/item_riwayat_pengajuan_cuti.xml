@@ -49,8 +49,8 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/poppins_regular"
                 android:text="Keperluan Pribadi"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:textColor="#7E7474"
+                android:textSize="14sp" />
 
         </LinearLayout>
 

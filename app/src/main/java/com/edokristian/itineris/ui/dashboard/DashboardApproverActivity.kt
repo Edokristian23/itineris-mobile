@@ -12,6 +12,7 @@ import com.edokristian.itineris.model.response.GetCurrentEmployeeResponse
 import com.edokristian.itineris.services.ApiClient
 import com.edokristian.itineris.services.ApiService
 import com.edokristian.itineris.ui.form_pengajuan_cuti.FormPengajuanCutiActivity
+import com.edokristian.itineris.ui.form_pengajuan_cuti.RiwayatPengajuanCutiApprovalActivity
 import com.edokristian.itineris.ui.login.LoginActivity
 import com.edokristian.itineris.ui.persetujuan.PersetujuanActivity
 import com.edokristian.itineris.ui.riwayat_pengajuan_cuti.RiwayatPengajuanCutiActivity
@@ -55,9 +56,9 @@ class DashboardApproverActivity : AppCompatActivity() {
             }
         }
 
-        binding.riwayatPengajuanCuti.setOnClickListener {
+        binding.btnRiwayat.setOnClickListener {
 //            Toast.makeText(this, "${sessionManager.getString(Constant.PREFS_USER_ID)}", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, RiwayatPengajuanCutiActivity::class.java)
+            val intent = Intent(this, RiwayatPengajuanCutiApprovalActivity::class.java)
             startActivity(intent)
         }
 

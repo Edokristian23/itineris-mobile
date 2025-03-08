@@ -55,7 +55,7 @@ class ApprovalAdapter(val context: Context, val approvalRequest: List<DataX>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val approvReq = approvalRequest[position]
         if (approvReq.status == "pending"){
-            holder.binding.tvName.text = approvReq.employee_id.toString()
+            holder.binding.tvName.text = approvReq.employee_name
             holder.binding.tvLeaveType.text = approvReq.leave_type
             holder.binding.tvStartEndDate.text = "${approvReq.start_date} s/d ${approvReq.end_date}"
             holder.binding.tvReason.text = approvReq.reason
