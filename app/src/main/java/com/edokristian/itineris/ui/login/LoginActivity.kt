@@ -153,7 +153,7 @@ class LoginActivity : AppCompatActivity() {
             return user
         } else {
             withContext(Dispatchers.Main) {
-                Toast.makeText(this@LoginActivity, "Gagal Login", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LoginActivity, "NIP atau Password Anda Salah", Toast.LENGTH_SHORT).show()
             }
             return null
         }

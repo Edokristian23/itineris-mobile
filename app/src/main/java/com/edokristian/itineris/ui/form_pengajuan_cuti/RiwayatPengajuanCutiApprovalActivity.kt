@@ -67,6 +67,11 @@ class RiwayatPengajuanCutiApprovalActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+
+        binding.btnAproval.setOnClickListener {
+            val intent = Intent(this, PersetujuanActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private suspend fun getAllLeaveHistories(): GetLeaveHistoriesResponse? {

@@ -235,7 +235,7 @@ class FormPengajuanCutiActivity : AppCompatActivity(), AdapterView.OnItemSelecte
             return user
         } else {
             withContext(Dispatchers.Main) {
-                Toast.makeText(this@FormPengajuanCutiActivity, "Permohonan Cuti Gagal di Proses", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@FormPengajuanCutiActivity, "Mohon Maaf Silahkan Cek Sisa Cuti Anda", Toast.LENGTH_SHORT).show()
             }
             return null
         }

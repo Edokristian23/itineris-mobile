@@ -68,8 +68,10 @@ class ApprovalAdapter(val context: Context, val approvalRequest: List<DataX>) :
                 var tvStartEndDate = bottomSheetDialog.findViewById<TextView>(R.id.tv_start_end_date)
                 var tvReason = bottomSheetDialog.findViewById<TextView>(R.id.tv_reason)
                 var tvClose = bottomSheetDialog.findViewById<ImageView>(R.id.iv_close)
-                val btnTerima = bottomSheetDialog.findViewById<Button>(R.id.btn_terima_persetujuan)
+                var btnTerima = bottomSheetDialog.findViewById<Button>(R.id.btn_terima_persetujuan)
+                var tvTotalDay = bottomSheetDialog.findViewById<TextView>(R.id.tv_total_day)
 
+                tvTotalDay!!.text = "${approvReq.total_days} Hari"
                 tvLeaveType!!.text = approvReq.leave_type
                 tvStartEndDate!!.text = "${approvReq.start_date} s/d ${approvReq.end_date}"
                 tvReason!!.text = approvReq.reason
@@ -114,7 +116,10 @@ class ApprovalAdapter(val context: Context, val approvalRequest: List<DataX>) :
                 var tvClose = bottomSheetDialog.findViewById<ImageView>(R.id.iv_close)
                 var etRejectNote = bottomSheetDialog.findViewById<EditText>(R.id.et_rejection_note)
                 var btnTolak = bottomSheetDialog.findViewById<Button>(R.id.btn_ajukan_penolakan)
+                var tvTotalDay = bottomSheetDialog.findViewById<TextView>(R.id.tv_total_day)
 
+
+                tvTotalDay!!.text = "${approvReq.total_days} Hari"
                 tvLeaveType!!.text = approvReq.leave_type
                 tvStartEndDate!!.text = "${approvReq.start_date} s/d ${approvReq.end_date}"
                 tvReason!!.text = approvReq.reason
