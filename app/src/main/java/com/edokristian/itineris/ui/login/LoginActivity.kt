@@ -63,7 +63,8 @@ class LoginActivity : AppCompatActivity() {
 //                    getLeaveHistories()
 //                    moveToIntent()
                 } catch (e: Exception){
-                    throw Exception(e.message)
+//                    val intent = Intent(this@LoginActivity, LoginActivity::class.java)
+//                    startActivity(intent)
                 }
             }
         }
