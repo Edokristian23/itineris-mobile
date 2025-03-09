@@ -3,6 +3,7 @@ package com.edokristian.itineris.ui.form_pengajuan_cuti
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
@@ -34,7 +35,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 import java.util.Locale
+import java.util.logging.Handler
 
 class FormPengajuanCutiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
@@ -124,6 +127,11 @@ class FormPengajuanCutiActivity : AppCompatActivity(), AdapterView.OnItemSelecte
             val mDifferenceDates = mDifference / (24 * 60 * 60 * 1000)
             val mDayDifference = mDifferenceDates.toString()
 
+            val countday = mDate11.time / (24 * 60 * 60 * 1000)
+            val countday2 = mDate22.time / (24 * 60 * 60 * 1000)
+//            Log.e("FormPengajuanCutiActivity", "onCreate 1: ${countday}", )
+//            Log.e("FormPengajuanCutiActivity", "onCreate 2: ${countday2}", )
+
 //            Toast.makeText(this, mDayDifference, Toast.LENGTH_SHORT).show()
 
             when(sessionManager.getString(Constant.PREFS_SPINNER)){
@@ -136,16 +144,40 @@ class FormPengajuanCutiActivity : AppCompatActivity(), AdapterView.OnItemSelecte
                 "Cuti Diluar Tanggungan Negara" -> leaveTypeSpinner = 7
             }
 
+            val sdf = SimpleDateFormat("yyyy-MM-dd")
+            val currentDate = sdf.format(Date())
+
+
+
+//            Log.e("FormPengajuanCutiActivity", "onCreate 1: ${mDate1}")
+//            Log.e("FormPengajuanCutiActivity", "onCreate 2: ${mDate2}")
+//            Log.e("FormPengajuanCutiActivity", "currentDate : ${currentDate}")
+//            Log.e("FormPengajuanCutiActivity", "currentDate 1: ${currentDate == mDate1}")
+//            Log.e("FormPengajuanCutiActivity", "currentDate 2: ${currentDate == mDate2}")
+
+
             CoroutineScope(Dispatchers.IO).launch {
-                try {
-                   leaveRequest(
-                       end_date=end_date!!,
-                       leave_type=leaveTypeSpinner,
-                       reason=reason,
-                       start_date=start_date!!)
-                    moveToHome()
-                } catch (e: Exception){
-                    throw Exception(e.message)
+                if (currentDate == mDate1) {
+                    android.os.Handler(Looper.getMainLooper()).post {
+                        Toast.makeText(this@FormPengajuanCutiActivity,
+                            "Form pengajuan tidak valid",
+                            Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    if (countday2 >= countday) {
+                        leaveRequest(
+                            end_date=end_date!!,
+                            leave_type=leaveTypeSpinner,
+                            reason=reason,
+                            start_date=start_date!!)
+                        moveToHome()
+                    } else {
+                        android.os.Handler(Looper.getMainLooper()).post {
+                            Toast.makeText(this@FormPengajuanCutiActivity,
+                                "Tanggal selesai harus setelah tanggal mulai",
+                                Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 }
             }
         }
