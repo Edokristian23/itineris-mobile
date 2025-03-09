@@ -91,11 +91,13 @@
             android:id="@+id/tv_position"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:fontFamily="@font/roboto_regular"
             android:text="PNS - Pranata Komputer"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tv_nip"
             app:layout_constraintTop_toBottomOf="@+id/tv_nip" />
 
